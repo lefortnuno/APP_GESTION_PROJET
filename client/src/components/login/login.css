@@ -1,0 +1,32 @@
+/* Container principal */
+.login-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #f4f4f4, #e2e2e2);
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Boîte de connexion */
+  .login-box {
+    background: #ffffff; 
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    max-width: 400px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+  }
+   
+  
+  /* Champs de formulaire (ajoute si nécessaire) */
+  input[type="text"],
+  input[type="password"],
+  button { 
+    border-radius: 5px; 
+  }
+   
