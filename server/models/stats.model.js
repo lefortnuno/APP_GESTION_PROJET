@@ -42,7 +42,7 @@ const ALL_STATS_PROCEDURE_MONTH = `
       AVG(IF(h_numeroProcedure = 11, DATEDIFF(dateFinMouvement, dateDebutMouvement), NULL)) as "MUTATION", 
       AVG(IF(h_numeroProcedure = 69, DATEDIFF(dateFinMouvement, dateDebutMouvement), NULL)) as "AVC"
   FROM
-      HISTORIQUE
+      historique
   GROUP BY
       MONTH(dateDebutMouvement) `;
 
@@ -53,10 +53,10 @@ SELECT
     AVG(DATEDIFF(dateFinMouvement, dateDebutMouvement)) as nombreJour
     --  SUM(DATEDIFF(dateFinMouvement, dateDebutMouvement)) as nombreJour
 FROM
-    HISTORIQUE,
-    PROCEDURES
+    historique,
+    procedures
 WHERE
-    PROCEDURES.numeroProcedure = HISTORIQUE.h_numeroProcedure
+    procedures.numeroProcedure = historique.h_numeroProcedure
 GROUP BY
     h_numeroProcedure `;
 
@@ -68,7 +68,7 @@ SELECT
     COUNT(IF(h_numeroAffaire LIKE '%AX%', 1, NULL)) as "AX",
     COUNT(IF(h_numeroAffaire LIKE '%X%', 1, NULL)) as "X"
 FROM
-    HISTORIQUE
+    historique
 GROUP BY
     MONTH(dateDebutMouvement)`;
 
@@ -78,10 +78,10 @@ SELECT
     nomProcedure,
     SUM(DATEDIFF(dateFinMouvement, dateDebutMouvement)) as nombreJour
 FROM
-    HISTORIQUE,
-    PROCEDURES
+    historique,
+    procedures
 WHERE
-    PROCEDURES.numeroProcedure = HISTORIQUE.h_numeroProcedure
+    procedures.numeroProcedure = historique.h_numeroProcedure
     AND h_numeroDossier = ?
 GROUP BY
     h_numeroProcedure ;

@@ -18,15 +18,15 @@ SELECT
     nom,
     prenom
 FROM
-    REQUERANT,
-    INDIVIDU
+    requerant,
+    individu
 WHERE
-    REQUERANT.p_cin = INDIVIDU.cin `;
+    requerant.p_cin = individu.cin `;
 
 const ORDER_BY = ` ORDER BY numeroRequerant DESC `;
 
 Requerant.addRequerant = (newRequerant, result) => {
-  dbConn.query("INSERT INTO Requerant SET ?", newRequerant, (err, res) => {
+  dbConn.query("INSERT INTO requerant SET ?", newRequerant, (err, res) => {
     if (err) {
       result(err, null);
     } else {
@@ -94,7 +94,7 @@ Requerant.searchRequerant = (valeur, result) => {
 
 Requerant.updateRequerant = (updateRequerant, numeroRequerant, result) => {
   dbConn.query(
-    `update Requerant set ? where numeroRequerant = ${numeroRequerant}`,
+    `update requerant set ? where numeroRequerant = ${numeroRequerant}`,
     updateRequerant,
     function (err, res) {
       if (err) {
@@ -128,7 +128,7 @@ Requerant.apercuRequerant = (valeur, result) => {
 
 Requerant.deleteRequerant = (numeroRequerant, result) => {
   dbConn.query(
-    `DELETE FROM Requerant WHERE numeroRequerant = ${numeroRequerant}`,
+    `DELETE FROM requerant WHERE numeroRequerant = ${numeroRequerant}`,
     function (err, res) {
       if (err) {
         result(err, null);

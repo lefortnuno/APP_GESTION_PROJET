@@ -47,7 +47,7 @@ SELECT
     p_numeroDossier,
     p_numeroAffaire,
     prixAttribue
-FROM SOUS_DOSSIER `;
+FROM sous_dossier `;
 //#endregion
 
 //#region //
@@ -113,7 +113,7 @@ SELECT
     ) as prixTerrain
     
 FROM
-    SOUS_DOSSIER
+    sous_dossier
 WHERE
     p_numerodossier = ?
 ORDER BY
@@ -132,11 +132,11 @@ SELECT
 	ATTRIBUES +
 	`
 FROM
-    SOUS_DOSSIER,
-    DOSSIER
+    sous_dossier,
+    dossier
 WHERE
-    DOSSIER.numeroDossier = SOUS_DOSSIER.p_numeroDossier
-    AND DOSSIER.numeroAffaire = SOUS_DOSSIER.p_numeroAffaire
+    dossier.numeroDossier = sous_dossier.p_numeroDossier
+    AND dossier.numeroAffaire = sous_dossier.p_numeroAffaire
     AND (preVisa = 0 AND p_numeroProcedure = 1)
 GROUP BY
     p_numeroDossier
@@ -148,11 +148,11 @@ SELECT
     count(p_numeroDossier) as isaPreVisa,
     SUM(DATEDIFF(NOW(), dateDepotSD)) as nombreJour
 FROM
-    SOUS_DOSSIER,
-    DOSSIER
+    sous_dossier,
+    dossier
 WHERE
-    DOSSIER.numeroDossier = SOUS_DOSSIER.p_numeroDossier
-    AND DOSSIER.numeroAffaire = SOUS_DOSSIER.p_numeroAffaire
+    dossier.numeroDossier = sous_dossier.p_numeroDossier
+    AND dossier.numeroAffaire = sous_dossier.p_numeroAffaire
     AND (
         preVisa = 0
         AND p_numeroProcedure = 1
@@ -175,11 +175,11 @@ SELECT
 	ATTRIBUES +
 	`
 FROM
-    SOUS_DOSSIER,
-    DOSSIER
+    sous_dossier,
+    dossier
 WHERE
-    DOSSIER.numeroDossier = SOUS_DOSSIER.p_numeroDossier
-    AND DOSSIER.numeroAffaire = SOUS_DOSSIER.p_numeroAffaire
+    dossier.numeroDossier = sous_dossier.p_numeroDossier
+    AND dossier.numeroAffaire = sous_dossier.p_numeroAffaire
     AND (Visa = 0 AND p_numeroProcedure = 10)
 GROUP BY p_numeroDossier ORDER BY p_numeroDossier ASC `;
 
@@ -188,11 +188,11 @@ SELECT
     count(p_numeroDossier) as isaVisa,
     SUM(DATEDIFF(NOW(), dateDepotSD)) as nombreJour
 FROM
-    SOUS_DOSSIER,
-    DOSSIER
+    sous_dossier,
+    dossier
 WHERE
-    DOSSIER.numeroDossier = SOUS_DOSSIER.p_numeroDossier
-    AND DOSSIER.numeroAffaire = SOUS_DOSSIER.p_numeroAffaire
+    dossier.numeroDossier = sous_dossier.p_numeroDossier
+    AND dossier.numeroAffaire = sous_dossier.p_numeroAffaire
     AND (
         Visa = 0
         AND p_numeroProcedure = 10
@@ -205,7 +205,7 @@ ORDER BY
 //#endregion
 
 SousDossier.addSousDossier = (newSousDossier, result) => {
-	dbConn.query("INSERT INTO SOUS_DOSSIER SET ?", newSousDossier, (err, res) => {
+	dbConn.query("INSERT INTO sous_dossier SET ?", newSousDossier, (err, res) => {
 		if (err) {
 			result(err, null);
 		} else {
@@ -215,7 +215,7 @@ SousDossier.addSousDossier = (newSousDossier, result) => {
 };
 
 SousDossier.addSousDossierNewDemande = (newSousDossier) => {
-	dbConn.query("INSERT INTO SOUS_DOSSIER SET ?", newSousDossier);
+	dbConn.query("INSERT INTO sous_dossier SET ?", newSousDossier);
 };
 
 SousDossier.getAllSousDossiersOfDossier = (id, result) => {

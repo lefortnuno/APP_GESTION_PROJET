@@ -19,7 +19,7 @@ let Utilisateur = function (utilisateur) {
 const REQUETE_ADVANCER = `SELECT numeroCompte, num, compte.email as email,identification, photoPDP, attribut, mdp, statu, unite, u_cin, nom, prenom FROM compte, individu WHERE compte.u_cin = individu.cin `;
 const ORDER_BY = ` ORDER BY numeroCompte DESC `;
 
-const NOTIFICATION_COMPTE = `SELECT count(numeroCompte) as attenteActivation FROM COMPTE WHERE statu = 0 `;
+const NOTIFICATION_COMPTE = `SELECT count(numeroCompte) as attenteActivation FROM compte WHERE statu = 0 `;
 
 Utilisateur.addUtilisateur = (newUtilisateur, result) => {
   dbConn.query("INSERT INTO compte SET ?", newUtilisateur, (err, res) => {

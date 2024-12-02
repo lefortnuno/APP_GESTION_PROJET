@@ -6,11 +6,11 @@ let Bureau = function (bureau) {
   this.adressBureau = bureau.adressBureau;
 };
 
-const REQUETE_BASE = `SELECT * FROM Bureau `
+const REQUETE_BASE = `SELECT * FROM bureau `
 const ORDER_BY= ` ORDER BY idBureau ASC `
 
 Bureau.addBureau = (newBureau, result) => {
-  dbConn.query("INSERT INTO Bureau SET ?", newBureau, (err, res) => {
+  dbConn.query("INSERT INTO bureau SET ?", newBureau, (err, res) => {
     if (err) {
       result(err, null);
     } else {
@@ -41,7 +41,7 @@ Bureau.getIdBureau = (id, result) => {
 
 Bureau.updateBureau = (updateBureau, id, result) => {
   dbConn.query(
-    `update Bureau set ? where idBureau = ${id}`,
+    `update bureau set ? where idBureau = ${id}`,
     updateBureau,
     function (err, res) {
       if (err) {

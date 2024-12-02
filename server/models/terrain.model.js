@@ -52,19 +52,19 @@ SELECT
     prixTerrain,
     t_cin
 FROM
-    DOSSIER,
-    REQUERANT, 
-    INDIVIDU,
-    TERRAIN
+    dossier,
+    requerant, 
+    individu,
+    terrain
 WHERE
-    TERRAIN.t_cin = INDIVIDU.cin  
-    AND DOSSIER.p_numeroRequerant = REQUERANT.numeroRequerant  
-    AND INDIVIDU.cin = REQUERANT.p_cin
-    AND DOSSIER.numeroDossier = TERRAIN.t_numeroDossier
-    AND DOSSIER.numeroAffaire = TERRAIN.t_numeroAffaire `;
+    terrain.t_cin = individu.cin  
+    AND dossier.p_numeroRequerant = requerant.numeroRequerant  
+    AND individu.cin = requerant.p_cin
+    AND dossier.numeroDossier = terrain.t_numeroDossier
+    AND dossier.numeroAffaire = terrain.t_numeroAffaire `;
 
 Terrain.addTerrain = (newTerrain, result) => {
-  dbConn.query("INSERT INTO Terrain SET ?", newTerrain, (err, res) => {
+  dbConn.query("INSERT INTO terrain SET ?", newTerrain, (err, res) => {
     if (err) {
       result(err, null);
     } else {
@@ -74,7 +74,7 @@ Terrain.addTerrain = (newTerrain, result) => {
 };
 
 Terrain.getAllTerrains = (result) => {
-  dbConn.query("SELECT * FROM Terrain order by numeroTitre ASC", (err, res) => {
+  dbConn.query("SELECT * FROM terrain order by numeroTitre ASC", (err, res) => {
     if (err) {
       result(err, null);
     } else {
@@ -133,7 +133,7 @@ Terrain.rechercher_le_Terrain = (valeur, result) => {
 Terrain.updateTerrain = (updateTerrain, numeroTitre, result) => {
   // En Cas de Force Majeur !
   dbConn.query(
-    `update Terrain set ? where numeroTitre = ${numeroTitre}`,
+    `update terrain set ? where numeroTitre = ${numeroTitre}`,
     updateTerrain,
     function (err, res) {
       if (err) {

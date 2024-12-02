@@ -23,14 +23,21 @@ export default function ProfilHeader() {
           aria-expanded="false"
         >
           <img
-            src={process.env.PUBLIC_URL + `/picture/pdp/${u_info.u_photoPDP}`}
+            src={
+              process.env.REACT_APP_SUN_COMPLET_URL +
+              `uploads/${u_info.u_photoPDP}`
+            }
+            alt="pdp"
+            style={{ width: "40px", height: "40px", borderRadius: "50%" }}
+          />
+          {/* <img 
             // src={process.env.PUBLIC_URL + `/picture/pdp/directeur.png`}
             // src={process.env.PUBLIC_URL + `/picture/pdp/secretaire.png`}
             // src={process.env.PUBLIC_URL + `/picture/pdp/chefProjet.png`}
             // src={process.env.PUBLIC_URL + `/picture/pdp/comptable.png`}
             alt="pdp"
             style={{ width: "40px", height: "40px", borderRadius: "50%" }}
-          />
+          /> */}
           <span>
             {u_info.u_identification}
             {/* Bouchaib Fatima */}
@@ -45,7 +52,8 @@ export default function ProfilHeader() {
               <div className="u-img">
                 <img
                   src={
-                    process.env.PUBLIC_URL + `/picture/pdp/${u_info.u_photoPDP}`
+                    process.env.REACT_APP_SUN_COMPLET_URL +
+                    `uploads/${u_info.u_photoPDP}`
                   }
                   // src={process.env.PUBLIC_URL + `/picture/pdp/chefProjet.png`}
                   alt="pdp"
@@ -71,12 +79,7 @@ export default function ProfilHeader() {
             </div>
           </li>
           <div className="dropdown-divider"></div>
-          {/* <Link to="/utilisateur/" className="dropdown-item">
-            <i>
-              <BsGearFill />
-            </i>{" "}
-            Paramètre de compte
-          </Link> */}
+          
           <div className="dropdown-divider"></div>
           <a
             className="dropdown-item"
