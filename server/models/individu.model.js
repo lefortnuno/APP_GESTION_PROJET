@@ -31,9 +31,6 @@ Individu.addIndividu = (newIndividu, result) => {
 
 Individu.getAllIndividus = (result) => {
   dbConn.query(REQUETE_BASE + ORDER_BY, (err, res) => {
-    console.log("TTTTTTTTTTTTTTTTTTT " ,err,res);
-    console.log("TTTTTTTTTTTTTTTTTTT " ,REQUETE_BASE);
-    
     if (err) {
       result(err, null);
     } else {
