@@ -164,7 +164,7 @@ export default function FormulaireSeConnecter() {
           </small>
         </div>
         <div className="container-login100-form-btn">
-          <button className="login100-form-btn" onClick={validation}>
+          <button className="login100-form-btn" style={{borderRadius:"5px"}} onClick={validation}>
             Se connecter
           </button>
         </div>{" "}

@@ -5,6 +5,7 @@ const client = require("../middlewares/client.middleware");
 router.post("/", BureauController.addBureau);
 
 router.get("/", BureauController.getAllBureau);
+router.get("/glitch/", BureauController.getAllBureau);
 router.get("/:id", BureauController.getIdBureau);
 router.get("/recherche/:valeur", BureauController.searchBureau);
 
